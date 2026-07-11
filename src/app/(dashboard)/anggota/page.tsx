@@ -48,7 +48,7 @@ export default async function AnggotaPage() {
           <h1 className="text-2xl font-bold tracking-tight">Anggota</h1>
           <p className="text-muted-foreground">Kelola data anggota koperasi</p>
         </div>
-        <Button render={<Link href="/dashboard/anggota/tambah" />}>
+        <Button render={<Link href="/anggota/tambah" />}>
           <Plus className="mr-2 h-4 w-4" />
           Tambah Anggota
         </Button>
@@ -91,7 +91,7 @@ export default async function AnggotaPage() {
                     </TableCell>
                     <TableCell>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" render={<Link href={`/dashboard/anggota/${a.id}/edit`} />}>
+                        <Button variant="ghost" size="icon" render={<Link href={`/anggota/${a.id}/edit`} />}>
                           <Pencil className="h-4 w-4" />
                         </Button>
                         {a.id !== session?.user?.id && (

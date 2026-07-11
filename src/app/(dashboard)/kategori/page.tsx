@@ -25,7 +25,7 @@ export default async function KategoriPage() {
           <h1 className="text-2xl font-bold tracking-tight">Kategori Barang</h1>
           <p className="text-muted-foreground">Kelola kategori barang koperasi</p>
         </div>
-        <Button render={<Link href="/dashboard/kategori/tambah" />}>
+        <Button render={<Link href="/kategori/tambah" />}>
           <Plus className="mr-2 h-4 w-4" />Tambah Kategori
         </Button>
       </div>
@@ -57,7 +57,7 @@ export default async function KategoriPage() {
                     <TableCell className="text-center">{k._count.barang}</TableCell>
                     <TableCell>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" render={<Link href={`/dashboard/kategori/${k.id}/edit`} />}>
+                        <Button variant="ghost" size="icon" render={<Link href={`/kategori/${k.id}/edit`} />}>
                           <Pencil className="h-4 w-4" />
                         </Button>
                         <DeleteDialog id={k.id} name={k.nama} action={deleteKategori} />

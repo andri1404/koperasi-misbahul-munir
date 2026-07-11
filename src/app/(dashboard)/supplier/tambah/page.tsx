@@ -29,14 +29,14 @@ export default function TambahSupplierPage() {
     })
     if (result.message === "Validasi gagal") { setError(result.message); setLoading(false); return }
     toast.success(result.message || "Supplier ditambahkan")
-    router.push("/dashboard/supplier")
+    router.push("/supplier")
     router.refresh()
   }
 
   return (
     <div className="mx-auto max-w-lg space-y-4">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" render={<Link href="/dashboard/supplier" />}><ArrowLeft className="h-4 w-4" /></Button>
+        <Button variant="ghost" size="icon" render={<Link href="/supplier" />}><ArrowLeft className="h-4 w-4" /></Button>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Tambah Supplier</h1>
           <p className="text-muted-foreground">Daftarkan supplier baru</p>
@@ -60,7 +60,7 @@ export default function TambahSupplierPage() {
             </div>
             {error && <p className="text-sm text-red-500">{error}</p>}
             <div className="flex justify-end gap-2">
-              <Button variant="outline" type="button" render={<Link href="/dashboard/supplier" />}>Batal</Button>
+              <Button variant="outline" type="button" render={<Link href="/supplier" />}>Batal</Button>
               <Button type="submit" disabled={loading}><Save className="mr-2 h-4 w-4" />{loading ? "Menyimpan..." : "Simpan"}</Button>
             </div>
           </form>

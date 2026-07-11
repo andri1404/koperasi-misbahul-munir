@@ -27,7 +27,7 @@ export default async function PenjualanPage() {
           <h1 className="text-2xl font-bold tracking-tight">Penjualan</h1>
           <p className="text-muted-foreground">Catatan penjualan barang</p>
         </div>
-        <Button render={<Link href="/dashboard/penjualan/tambah" />}><Plus className="mr-2 h-4 w-4" />Penjualan Baru</Button>
+        <Button render={<Link href="/penjualan/tambah" />}><Plus className="mr-2 h-4 w-4" />Penjualan Baru</Button>
       </div>
 
       <Card>
@@ -61,7 +61,7 @@ export default async function PenjualanPage() {
                     <TableCell className="text-right">Rp {p.total.toLocaleString("id-ID")}</TableCell>
                     <TableCell>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" render={<Link href={`/dashboard/penjualan/${p.id}`} />}><Eye className="h-4 w-4" /></Button>
+                        <Button variant="ghost" size="icon" render={<Link href={`/penjualan/${p.id}`} />}><Eye className="h-4 w-4" /></Button>
                         <DeleteDialog id={p.id} name={p.noFaktur} action={deletePenjualan} />
                       </div>
                     </TableCell>

@@ -24,7 +24,7 @@ export default async function SupplierPage() {
           <h1 className="text-2xl font-bold tracking-tight">Supplier</h1>
           <p className="text-muted-foreground">Kelola data supplier</p>
         </div>
-        <Button render={<Link href="/dashboard/supplier/tambah" />}><Plus className="mr-2 h-4 w-4" />Tambah Supplier</Button>
+        <Button render={<Link href="/supplier/tambah" />}><Plus className="mr-2 h-4 w-4" />Tambah Supplier</Button>
       </div>
 
       <Card>
@@ -56,7 +56,7 @@ export default async function SupplierPage() {
                     <TableCell className="text-center">{s._count.pembelian}</TableCell>
                     <TableCell>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" render={<Link href={`/dashboard/supplier/${s.id}/edit`} />}><Pencil className="h-4 w-4" /></Button>
+                        <Button variant="ghost" size="icon" render={<Link href={`/supplier/${s.id}/edit`} />}><Pencil className="h-4 w-4" /></Button>
                         <DeleteDialog id={s.id} name={s.nama} action={deleteSupplier} />
                       </div>
                     </TableCell>

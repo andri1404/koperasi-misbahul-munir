@@ -37,7 +37,7 @@ export function LaporanClient({
     params.set("from", from)
     params.set("to", to)
     params.set(key, value)
-    router.push(`/dashboard/laporan?${params.toString()}`)
+    router.push(`/laporan?${params.toString()}`)
   }
 
   async function exportExcel() {

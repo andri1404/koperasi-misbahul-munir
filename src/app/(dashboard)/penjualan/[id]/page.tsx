@@ -21,7 +21,7 @@ export default async function DetailPenjualanPage({ params }: { params: Promise<
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" render={<Link href="/dashboard/penjualan" />}><ArrowLeft className="h-4 w-4" /></Button>
+        <Button variant="ghost" size="icon" render={<Link href="/penjualan" />}><ArrowLeft className="h-4 w-4" /></Button>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Detail Penjualan</h1>
           <p className="text-muted-foreground">{penjualan.noFaktur}</p>

@@ -29,14 +29,14 @@ export function KategoriEditForm({ kategori }: { kategori: KategoriBarang }) {
       return
     }
     toast.success(result.message || "Kategori diperbarui")
-    router.push("/dashboard/kategori")
+    router.push("/kategori")
     router.refresh()
   }
 
   return (
     <div className="mx-auto max-w-lg space-y-4">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" render={<Link href="/dashboard/kategori" />}><ArrowLeft className="h-4 w-4" /></Button>
+        <Button variant="ghost" size="icon" render={<Link href="/kategori" />}><ArrowLeft className="h-4 w-4" /></Button>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Edit Kategori</h1>
           <p className="text-muted-foreground">Perbarui data kategori</p>
@@ -52,7 +52,7 @@ export function KategoriEditForm({ kategori }: { kategori: KategoriBarang }) {
               {error && <p className="text-sm text-red-500">{error}</p>}
             </div>
             <div className="flex justify-end gap-2">
-              <Button variant="outline" type="button" render={<Link href="/dashboard/kategori" />}>Batal</Button>
+              <Button variant="outline" type="button" render={<Link href="/kategori" />}>Batal</Button>
               <Button type="submit" disabled={loading}>
                 <Save className="mr-2 h-4 w-4" />{loading ? "Menyimpan..." : "Simpan"}
               </Button>

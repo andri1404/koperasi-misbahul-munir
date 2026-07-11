@@ -92,14 +92,14 @@ export function PenjualanForm({ barang, anggota, userId }: PenjualanFormProps) {
 
     if (result.error) { setError("Gagal menyimpan penjualan"); return }
     toast.success("Penjualan berhasil dicatat")
-    router.push("/dashboard/penjualan")
+    router.push("/penjualan")
     router.refresh()
   }
 
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" render={<Link href="/dashboard/penjualan" />}><ArrowLeft className="h-4 w-4" /></Button>
+        <Button variant="ghost" size="icon" render={<Link href="/penjualan" />}><ArrowLeft className="h-4 w-4" /></Button>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Penjualan Baru</h1>
           <p className="text-muted-foreground">Catat penjualan barang ke anggota</p>
@@ -186,7 +186,7 @@ export function PenjualanForm({ barang, anggota, userId }: PenjualanFormProps) {
                 {error && <p className="text-sm text-red-500">{error}</p>}
 
                 <div className="flex gap-2">
-                  <Button variant="outline" type="button" render={<Link href="/dashboard/penjualan" />} className="flex-1">Batal</Button>
+                  <Button variant="outline" type="button" render={<Link href="/penjualan" />} className="flex-1">Batal</Button>
                   <Button type="submit" disabled={loading} className="flex-1">
                     <Save className="mr-2 h-4 w-4" />{loading ? "Menyimpan..." : "Simpan"}
                   </Button>

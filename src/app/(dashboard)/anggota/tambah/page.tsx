@@ -43,14 +43,14 @@ export default function TambahAnggotaPage() {
     }
 
     toast.success(result.message || "Anggota berhasil ditambahkan")
-    router.push("/dashboard/anggota")
+    router.push("/anggota")
     router.refresh()
   }
 
   return (
     <div className="mx-auto max-w-lg space-y-4">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" render={<Link href="/dashboard/anggota" />}>
+        <Button variant="ghost" size="icon" render={<Link href="/anggota" />}>
           <ArrowLeft className="h-4 w-4" />
         </Button>
         <div>
@@ -114,7 +114,7 @@ export default function TambahAnggotaPage() {
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
-              <Button variant="outline" type="button" render={<Link href="/dashboard/anggota" />}>Batal</Button>
+              <Button variant="outline" type="button" render={<Link href="/anggota" />}>Batal</Button>
               <Button type="submit" disabled={loading}>
                 <Save className="mr-2 h-4 w-4" />
                 {loading ? "Menyimpan..." : "Simpan"}

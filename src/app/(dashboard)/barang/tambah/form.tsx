@@ -49,14 +49,14 @@ export function BarangForm({ kategori, barang }: { kategori: { id: string; nama:
     }
 
     toast.success(result.message)
-    router.push("/dashboard/barang")
+    router.push("/barang")
     router.refresh()
   }
 
   return (
     <div className="mx-auto max-w-lg space-y-4">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" render={<Link href="/dashboard/barang" />}><ArrowLeft className="h-4 w-4" /></Button>
+        <Button variant="ghost" size="icon" render={<Link href="/barang" />}><ArrowLeft className="h-4 w-4" /></Button>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">{barang ? "Edit Barang" : "Tambah Barang"}</h1>
           <p className="text-muted-foreground">{barang ? "Perbarui data barang" : "Daftarkan barang baru"}</p>
@@ -117,7 +117,7 @@ export function BarangForm({ kategori, barang }: { kategori: { id: string; nama:
             {error && <p className="text-sm text-red-500">{error}</p>}
 
             <div className="flex justify-end gap-2">
-              <Button variant="outline" type="button" render={<Link href="/dashboard/barang" />}>Batal</Button>
+              <Button variant="outline" type="button" render={<Link href="/barang" />}>Batal</Button>
               <Button type="submit" disabled={loading}>
                 <Save className="mr-2 h-4 w-4" />{loading ? "Menyimpan..." : "Simpan"}
               </Button>

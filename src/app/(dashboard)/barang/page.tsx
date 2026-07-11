@@ -25,7 +25,7 @@ export default async function BarangPage() {
           <h1 className="text-2xl font-bold tracking-tight">Barang</h1>
           <p className="text-muted-foreground">Kelola data barang koperasi</p>
         </div>
-        <Button render={<Link href="/dashboard/barang/tambah" />}>
+        <Button render={<Link href="/barang/tambah" />}>
           <Plus className="mr-2 h-4 w-4" />Tambah Barang
         </Button>
       </div>
@@ -69,7 +69,7 @@ export default async function BarangPage() {
                     </TableCell>
                     <TableCell>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" render={<Link href={`/dashboard/barang/${b.id}/edit`} />}>
+                        <Button variant="ghost" size="icon" render={<Link href={`/barang/${b.id}/edit`} />}>
                           <Pencil className="h-4 w-4" />
                         </Button>
                         <DeleteDialog id={b.id} name={b.nama} action={deleteBarang} />
