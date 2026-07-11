@@ -1,0 +1,160 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// === NextAuth v5 Models ===
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+  role          String    @default("ANGGOTA")
+  noAnggota     String?   @unique
+  alamat        String?
+  telepon       String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  pembelian     Pembelian[]
+  penjualan     Penjualan[]      @relation("KasirPenjualan")
+  penjualanAnggota Penjualan[]   @relation("AnggotaPenjualan")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// === Koperasi Konsumen Models ===
+model KategoriBarang {
+  id        String   @id @default(cuid())
+  nama      String   @unique
+  barang    Barang[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Barang {
+  id        String   @id @default(cuid())
+  kode      String   @unique
+  nama      String
+  kategoriId String
+  kategori  KategoriBarang @relation(fields: [kategoriId], references: [id])
+  hargaBeli Float    @default(0)
+  hargaJual Float    @default(0)
+  stok      Int      @default(0)
+  satuan    String   @default("pcs")
+  deskripsi String?
+
+  detailPembelian DetailPembelian[]
+  detailPenjualan DetailPenjualan[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Supplier {
+  id        String   @id @default(cuid())
+  nama      String
+  kontak    String?
+  alamat    String?
+
+  pembelian Pembelian[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Pembelian {
+  id         String   @id @default(cuid())
+  noFaktur   String   @unique
+  supplierId String
+  supplier   Supplier @relation(fields: [supplierId], references: [id])
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  total      Float    @default(0)
+  tanggal    DateTime @default(now())
+
+  detail DetailPembelian[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DetailPembelian {
+  id          String    @id @default(cuid())
+  pembelianId String
+  pembelian   Pembelian @relation(fields: [pembelianId], references: [id], onDelete: Cascade)
+  barangId    String
+  barang      Barang    @relation(fields: [barangId], references: [id])
+  jumlah      Int
+  harga       Float
+  subtotal    Float
+}
+
+model Penjualan {
+  id         String   @id @default(cuid())
+  noFaktur   String   @unique
+  userId     String
+  user       User     @relation("KasirPenjualan", fields: [userId], references: [id])
+  anggotaId  String?
+  anggota    User?    @relation("AnggotaPenjualan", fields: [anggotaId], references: [id])
+  total      Float    @default(0)
+  tanggal    DateTime @default(now())
+
+  detail DetailPenjualan[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DetailPenjualan {
+  id          String    @id @default(cuid())
+  penjualanId String
+  penjualan   Penjualan @relation(fields: [penjualanId], references: [id], onDelete: Cascade)
+  barangId    String
+  barang      Barang    @relation(fields: [barangId], references: [id])
+  jumlah      Int
+  harga       Float
+  subtotal    Float
+}
