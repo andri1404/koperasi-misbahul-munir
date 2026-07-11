@@ -53,7 +53,7 @@ export async function createPenjualan(data: PenjualanFormData) {
     })
   }
 
-  revalidatePath("/dashboard/penjualan")
+  revalidatePath("/penjualan")
   return { message: "Penjualan berhasil dicatat", id: penjualan.id }
 }
 
@@ -72,5 +72,5 @@ export async function deletePenjualan(id: string) {
   }
 
   await prisma.penjualan.delete({ where: { id } })
-  revalidatePath("/dashboard/penjualan")
+  revalidatePath("/penjualan")
 }

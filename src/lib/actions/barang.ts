@@ -25,7 +25,7 @@ export async function createBarang(data: BarangFormData) {
   if (existing) return { message: "Kode barang sudah digunakan" }
 
   await prisma.barang.create({ data: parsed.data })
-  revalidatePath("/dashboard/barang")
+  revalidatePath("/barang")
   return { message: "Barang berhasil ditambahkan" }
 }
 
@@ -37,11 +37,11 @@ export async function updateBarang(id: string, data: BarangFormData) {
   if (existing) return { message: "Kode barang sudah digunakan" }
 
   await prisma.barang.update({ where: { id }, data: parsed.data })
-  revalidatePath("/dashboard/barang")
+  revalidatePath("/barang")
   return { message: "Barang berhasil diperbarui" }
 }
 
 export async function deleteBarang(id: string) {
   await prisma.barang.delete({ where: { id } })
-  revalidatePath("/dashboard/barang")
+  revalidatePath("/barang")
 }

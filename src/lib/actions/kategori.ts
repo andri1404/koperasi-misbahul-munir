@@ -19,7 +19,7 @@ export async function createKategori(data: KategoriFormData) {
   if (existing) return { message: "Kategori sudah ada" }
 
   await prisma.kategoriBarang.create({ data: { nama } })
-  revalidatePath("/dashboard/kategori")
+  revalidatePath("/kategori")
   return { message: "Kategori berhasil ditambahkan" }
 }
 
@@ -32,11 +32,11 @@ export async function updateKategori(id: string, data: KategoriFormData) {
   if (existing) return { message: "Kategori sudah ada" }
 
   await prisma.kategoriBarang.update({ where: { id }, data: { nama } })
-  revalidatePath("/dashboard/kategori")
+  revalidatePath("/kategori")
   return { message: "Kategori berhasil diperbarui" }
 }
 
 export async function deleteKategori(id: string) {
   await prisma.kategoriBarang.delete({ where: { id } })
-  revalidatePath("/dashboard/kategori")
+  revalidatePath("/kategori")
 }

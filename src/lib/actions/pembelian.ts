@@ -53,7 +53,7 @@ export async function createPembelian(data: PembelianFormData) {
     })
   }
 
-  revalidatePath("/dashboard/pembelian")
+  revalidatePath("/pembelian")
   return { message: "Pembelian berhasil dicatat", id: pembelian.id }
 }
 
@@ -72,5 +72,5 @@ export async function deletePembelian(id: string) {
   }
 
   await prisma.pembelian.delete({ where: { id } })
-  revalidatePath("/dashboard/pembelian")
+  revalidatePath("/pembelian")
 }

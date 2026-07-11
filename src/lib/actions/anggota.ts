@@ -47,7 +47,7 @@ export async function createAnggota(data: AnggotaFormData) {
     data: { name, email, password: hashed, noAnggota, alamat, telepon, role },
   })
 
-  revalidatePath("/dashboard/anggota")
+  revalidatePath("/anggota")
   return { message: "Anggota berhasil ditambahkan" }
 }
 
@@ -75,11 +75,11 @@ export async function updateAnggota(id: string, data: z.infer<typeof anggotaEdit
 
   await prisma.user.update({ where: { id }, data: updateData })
 
-  revalidatePath("/dashboard/anggota")
+  revalidatePath("/anggota")
   return { message: "Anggota berhasil diperbarui" }
 }
 
 export async function deleteAnggota(id: string) {
   await prisma.user.delete({ where: { id } })
-  revalidatePath("/dashboard/anggota")
+  revalidatePath("/anggota")
 }

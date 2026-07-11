@@ -17,7 +17,7 @@ export async function createSupplier(data: SupplierFormData) {
   if (!parsed.success) return { error: parsed.error.flatten().fieldErrors, message: "Validasi gagal" }
 
   await prisma.supplier.create({ data: parsed.data })
-  revalidatePath("/dashboard/supplier")
+  revalidatePath("/supplier")
   return { message: "Supplier berhasil ditambahkan" }
 }
 
@@ -26,11 +26,11 @@ export async function updateSupplier(id: string, data: SupplierFormData) {
   if (!parsed.success) return { error: parsed.error.flatten().fieldErrors, message: "Validasi gagal" }
 
   await prisma.supplier.update({ where: { id }, data: parsed.data })
-  revalidatePath("/dashboard/supplier")
+  revalidatePath("/supplier")
   return { message: "Supplier berhasil diperbarui" }
 }
 
 export async function deleteSupplier(id: string) {
   await prisma.supplier.delete({ where: { id } })
-  revalidatePath("/dashboard/supplier")
+  revalidatePath("/supplier")
 }
