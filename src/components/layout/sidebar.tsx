@@ -18,36 +18,36 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 
-const menuItems = [
-  {
-    title: "Utama",
-    items: [
-      { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-      { name: "Anggota", href: "/dashboard/anggota", icon: Users },
-    ],
-  },
-  {
-    title: "Inventaris",
-    items: [
-      { name: "Kategori", href: "/dashboard/kategori", icon: Package },
-      { name: "Barang", href: "/dashboard/barang", icon: Package },
-      { name: "Supplier", href: "/dashboard/supplier", icon: Users },
-    ],
-  },
-  {
-    title: "Transaksi",
-    items: [
-      { name: "Pembelian", href: "/dashboard/pembelian", icon: ShoppingCart },
-      { name: "Penjualan", href: "/dashboard/penjualan", icon: ClipboardList },
-    ],
-  },
-  {
-    title: "Laporan",
-    items: [
-      { name: "Laporan", href: "/dashboard/laporan", icon: FileText },
-    ],
-  },
-]
+  const menuItems = [
+    {
+      title: "Utama",
+      items: [
+        { name: "Dashboard", href: "/", icon: LayoutDashboard },
+        { name: "Anggota", href: "/anggota", icon: Users },
+      ],
+    },
+    {
+      title: "Inventaris",
+      items: [
+        { name: "Kategori", href: "/kategori", icon: Package },
+        { name: "Barang", href: "/barang", icon: Package },
+        { name: "Supplier", href: "/supplier", icon: Users },
+      ],
+    },
+    {
+      title: "Transaksi",
+      items: [
+        { name: "Pembelian", href: "/pembelian", icon: ShoppingCart },
+        { name: "Penjualan", href: "/penjualan", icon: ClipboardList },
+      ],
+    },
+    {
+      title: "Laporan",
+      items: [
+        { name: "Laporan", href: "/laporan", icon: FileText },
+      ],
+    },
+  ]
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -63,7 +63,7 @@ export function Sidebar() {
     >
       <div className="flex h-14 items-center border-b px-4">
         {!collapsed && (
-          <Link href="/dashboard" className="text-lg font-bold text-primary">
+          <Link href="/" className="text-lg font-bold text-primary">
             KMM
           </Link>
         )}
