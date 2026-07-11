@@ -12,15 +12,15 @@ export default function middleware(request: NextRequest) {
   const isLoggedIn = !!sessionCookie?.value
   const pathname = request.nextUrl.pathname
 
-  const isAuthPage = pathname === "/login"
-  const isRegister = pathname === "/register"
-  const isDashboard = pathname.startsWith("/dashboard")
+  const isAuthPage = pathname === "/login" || pathname === "/register"
+  const isApiRoute = pathname.startsWith("/api")
+  const isProtectedPage = !isAuthPage && !isApiRoute
 
-  if (isLoggedIn && (isAuthPage || isRegister)) {
-    return NextResponse.redirect(new URL("/dashboard", request.url))
+  if (isLoggedIn && isAuthPage) {
+    return NextResponse.redirect(new URL("/", request.url))
   }
 
-  if (!isLoggedIn && isDashboard) {
+  if (!isLoggedIn && isProtectedPage) {
     return NextResponse.redirect(
       new URL(`/login?callbackUrl=${encodeURIComponent(pathname)}`, request.url),
     )
